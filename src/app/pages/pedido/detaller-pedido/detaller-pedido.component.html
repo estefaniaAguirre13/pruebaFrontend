@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      Ficha técnica pedido #{{model.idPlan}}
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col">
+          <p><b>Guía de envío:</b> {{model.guia}}</p>
+          <p><b>Cliente:</b> {{model.idCliente.nombreCliente}} {{model.idCliente.apellidoCliente}}</p>
+          <p><b>Ciudad de entrega:</b> {{model.idCiudad.nombreCiudad}}</p>
+        </div>
+        <div class="col">
+          <p><b>Producto:</b> {{model.idProducto.nombreProducto}}</p>
+          <p><b>Cantidad:</b> {{model.cantidad}}</p>
+          <p><b>Fecha de registro:</b> {{model.fechaRegistro | date: 'medium'}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <p><b>Tipo de entrega:</b> {{model.idLogistica.tipoLogistica}}</p>
+          <p><b>Costo de envío:</b> ${{model.costoEnvio}}</p>
+          <p><b>Valor por pagar:</b> ${{model.costoPagar}}</p>
+        </div>
+        <div class="col">
+          <p><b>Vehículo de entrega:</b> {{model.idVehiculo.placaVehiculo}}</p>
+          <p><b>Centro de entrega:</b> {{model.idCentro.nombreAlmacen}}</p>
+          <p><b>Fecha de entrega:</b> {{model.fechaEntrega | date:'fullDate'}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <button mat-raised-button color="primary" [routerLink]="['/pedidos']" routerLinkActive="active">Regresar</button>
+    </div>
+  </div>
+</div>

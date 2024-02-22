@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="col">
+    <input _ngcontent-c27 type="text" placeholder="Guía Del Pedido" [(ngModel)]="search">
+
+    <button type="button" class="btn btn-outline-primary" (click)="ngOnInit()">
+      <mat-icon>search</mat-icon>
+    </button>
+
+    <button  type="button" class="btn btn-outline-primary" style="margin-left: 20px;"  [routerLink]="['/nuevo/pedido']" routerLinkActive="active">
+      <mat-icon>add_box</mat-icon>
+      Agregar pedido
+    </button>
+  </div>
+</div>
+<div>
+  <table class="table">
+    <thead class="table-primary">
+      <tr>
+        <th scope="col">ID Plan</th>
+        <th scope="col">Guía</th>
+        <th scope="col">ID Cliente</th>
+        <th scope="col">ID Logística</th>
+        <th scope="col">Costo de Envío</th>
+        <th scope="col">Costo a Pagar</th>
+        <th scope="col">Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pedido of pedidos">
+        <td>{{ pedido.idPlan }}</td>
+        <td>{{ pedido.guia }}</td>
+        <td>{{ pedido.idCliente.nombreCliente}} {{pedido.idCliente.apellidoCliente}}</td>
+        <td>{{ pedido.idLogistica.tipoLogistica}}</td>
+        <td>{{ pedido.costoEnvio }}</td>
+        <td>{{ pedido.costoPagar }}</td>
+        <td>
+          <button (click)="verDetalle(pedido.idPlan)" type="button" class="btn btn-outline-primary">
+            <mat-icon>find_replace</mat-icon>
+          </button>
+          <button  type="button" class="btn btn-edit" >
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button (click)="onDelete(pedido.idPlan)" type="button" class="btn btn-delete">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

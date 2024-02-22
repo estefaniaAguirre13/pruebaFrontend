@@ -1,0 +1,49 @@
+<div class="container">
+  <h3 class="mb-4">Ingreso De Nuevo Pedido</h3>
+  <form #newproductForm="ngForm" (ngSubmit)="onSave(newproductForm)">
+    <div class="mb-3">
+      <label for="idCliente" class="form-label">Cliente</label>
+      <select class="form-select" id="idCliente" name="idCliente" [(ngModel)]="model.idCliente" required>
+        <option *ngFor="let c of cliente" [ngValue]="c">{{c.nombreCliente}} {{c.apellidoCliente}}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="idLogistica" class="form-label">Tipo De Entrega</label>
+      <select class="form-select" id="idLogistica" name="idLogistica" [(ngModel)]="model.idLogistica" (ngModelChange)="cargarElementByLogistica()" required>
+        <option *ngFor="let l of logistica" [ngValue]="l">{{l.tipoLogistica}}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="idProducto" class="form-label">Producto</label>
+      <select class="form-select" id="idProducto" name="idProducto" [(ngModel)]="model.idProducto" required>
+        <option *ngFor="let p of producto" [ngValue]="p">{{p.nombreProducto}}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="cantidad" class="form-label">Cantidad De Producto</label>
+      <input type="number" class="form-control" id="cantidad" name="cantidad" [(ngModel)]="model.cantidad" required>
+    </div>
+    <div class="mb-3">
+      <label for="idVehiculo" class="form-label">Vehiculo</label>
+      <select class="form-select" id="idVehiculo" name="idVehiculo" [(ngModel)]="model.idVehiculo" required>
+        <option *ngFor="let v of vehiculo" [ngValue]="v">{{v.placaVehiculo}}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="idCiudad" class="form-label">Ciudad</label>
+      <select class="form-select" id="idCiudad" name="idCiudad" [(ngModel)]="model.idCiudad" (ngModelChange)="cargarAlmacenByCiudad()" required>
+        <option *ngFor="let cd of ciudad" [ngValue]="cd">{{cd.nombreCiudad}}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="idCentro" class="form-label">Punto De Entrega</label>
+      <select class="form-select" id="idCentro" name="idCentro" [(ngModel)]="model.idCentro" required>
+        <option *ngFor="let a of almacen" [ngValue]="a">{{a.nombreAlmacen}}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <button class="btn btn-primary me-2" [disabled]="!newproductForm.form.valid" type="submit">Guardar</button>
+      <button class="btn btn-secondary" type="button" [routerLink]="['/pedidos']" routerLinkActive="active">Cancelar</button>
+    </div>
+  </form>
+</div>
